@@ -1,2 +1,2 @@
 # arduino
-Repository will have multiple source for different arduino projects.
+Repository will have multiple sources for different arduino projects.
