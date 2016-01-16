@@ -49,7 +49,7 @@ void move_servo (int i_steps , int i_servo_id ){
   delay(v_servos[i_servo_id].s_delay );
 }
 
-void set_servo_property(string i_property, string i_value, string i_servo_id) {
+void set_servo_property(String i_property, String i_value, String i_servo_id) {
 // List of properties
 // Speed            = SP
 // Current Position = PO
@@ -60,24 +60,24 @@ int v_value = atoi(i_value.c_str() ) ;
 int v_servo_id = atoi(i_servo_id.c_str() )  ;
 
 
-  if (i_property = 'PSP' ) {
-	v_servos[v_servo_id].s_speed = i_value ;
+  if (i_property = "PSP" ) {
+	v_servos[v_servo_id].s_speed = i_value.toInt() ;
   } ;
   
-  if (i_property = 'PPO' ) {
-	v_servos[v_servo_id].current_pos = i_value ;
+  if (i_property = "PPO" ) {
+	v_servos[v_servo_id].current_pos = i_value.toInt() ;
   } ;
   
-	if (i_property = 'PMI' ) {
-	v_servos[v_servo_id].minpos = i_value ;
+	if (i_property = "PMI" ) {
+	v_servos[v_servo_id].minpos = i_value.toInt() ;
   } ;
   
-  if (i_property = 'PMX' ) {
-	v_servos[v_servo_id].maxpos = i_value; 
+  if (i_property = "PMX" ) {
+	v_servos[v_servo_id].maxpos = i_value.toInt() ;
   } ;
   
-  if (i_property = 'PDL' ) {
-	v_servos[v_servo_id].s_delay = i_value; 
+  if (i_property = "PDL" ) {
+	v_servos[v_servo_id].s_delay = i_value.toInt() ; 
   } ;
   
 }
@@ -108,16 +108,16 @@ void setup() {
 
 
 void loop() {
-  string v_bt_state ;
+  int v_bt_state ;
 
   
   if (Serial.available()>0){
-      v_bt_state = char(Serial.read() );
+      v_bt_state = Serial.read() ;
 	  
 	  
-	  if (v_bt_state.substr(1,1) = 'P') {
-		   set_servo_property(v_bt_state.substr(1,3), v_bt_state.substr(5), v_bt_state.substr(4,1) ) ;
-	  };
+	  //if (v_bt_state.substr(1,1) = 'P') {
+	//	   set_servo_property(v_bt_state.substr(1,3), v_bt_state.substr(5), v_bt_state.substr(4,1) ) ;
+	//  };
 	  
 	  if (v_bt_state.substr(1,4) = 'MOV1')
 		  if (v_bt_state == 'MOV11') {
@@ -148,4 +148,3 @@ void loop() {
   };
   
 
-}
